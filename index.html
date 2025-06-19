@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -50,6 +50,22 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.2;
+        }
+
+        .powered-by {
+            font-size: 0.6rem;
+            font-weight: normal;
+            color: #666;
+            background: none;
+            -webkit-text-fill-color: #666;
+            text-transform: lowercase;
+            letter-spacing: 0.5px;
+            margin-top: -2px;
+            opacity: 0.7;
         }
 
         .nav-links {
@@ -93,7 +109,7 @@
             background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
             color: #e0e0e0;
             padding: 120px 0 80px;
-            text-align: center;
+            text-align: left;
             position: relative;
             overflow: hidden;
         }
@@ -112,6 +128,142 @@
         .hero-content {
             position: relative;
             z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: flex-start;
+            min-height: 70vh;
+        }
+
+        .hero-left {
+            text-align: left;
+        }
+
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 2rem;
+        }
+
+        .hero-main {
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Lightning Animation */
+        .hero-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 1rem;
+        }
+
+        .lightning-container {
+            position: relative;
+            animation: lightning-float 3s ease-in-out infinite;
+        }
+
+        .lightning-bolt {
+            position: relative;
+            font-size: 12rem;
+            color: #ffd700;
+            animation: lightning-power 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1)) 
+                    drop-shadow(0 0 60px rgba(255, 215, 0, 0.5));
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        }
+
+        @keyframes lightning-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        @keyframes lightning-power {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1)) 
+                        drop-shadow(0 0 60px rgba(255, 215, 0, 0.5));
+                opacity: 1;
+            }
+            25% { 
+                transform: scale(1.1) rotate(-2deg); 
+                filter: drop-shadow(0 0 40px rgba(255, 215, 0, 1)) 
+                        drop-shadow(0 0 80px rgba(255, 215, 0, 0.7));
+                opacity: 0.8;
+            }
+            50% { 
+                transform: scale(1.15) rotate(2deg); 
+                filter: drop-shadow(0 0 50px rgba(255, 215, 0, 1)) 
+                        drop-shadow(0 0 100px rgba(255, 215, 0, 0.9));
+                opacity: 1;
+            }
+            75% { 
+                transform: scale(1.05) rotate(-1deg); 
+                filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1)) 
+                        drop-shadow(0 0 70px rgba(255, 215, 0, 0.6));
+                opacity: 0.9;
+            }
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: #e0e0e0;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.1) 0%, 
+                rgba(255, 215, 0, 0.2) 50%, 
+                rgba(255, 215, 0, 0.1) 100%);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .highlight-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .secondary-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
         }
 
         .hero h1 {
@@ -134,14 +286,14 @@
             margin-bottom: 2rem;
             opacity: 0.9;
             max-width: 800px;
-            margin-left: auto;
+            margin-left: 0;
             margin-right: auto;
         }
 
         .hero-buttons {
             display: flex;
             gap: 1rem;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
             margin-top: 2rem;
         }
@@ -153,9 +305,9 @@
         }
 
         .problem-content {
-            text-align: center;
+            text-align: left;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0;
         }
 
         .problem h2 {
@@ -181,7 +333,7 @@
         }
 
         .section-title {
-            text-align: center;
+            text-align: left;
             font-size: 2.5rem;
             margin-bottom: 3rem;
             color: #e0e0e0;
@@ -197,7 +349,7 @@
             background: linear-gradient(135deg, #333 0%, #2a2a2a 100%);
             padding: 2rem;
             border-radius: 15px;
-            text-align: center;
+            text-align: left;
             transition: all 0.3s ease;
             border: 2px solid transparent;
         }
@@ -238,6 +390,79 @@
             padding: 2rem;
             border-radius: 15px;
             backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(26, 26, 26, 0.9) 0%, 
+                rgba(42, 42, 42, 0.8) 50%, 
+                rgba(26, 26, 26, 0.9) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23333"/><rect x="20" y="20" width="360" height="40" fill="%23555" rx="5"/><rect x="20" y="80" width="180" height="20" fill="%23666" rx="3"/><rect x="20" y="110" width="240" height="20" fill="%23666" rx="3"/><rect x="20" y="140" width="160" height="20" fill="%23666" rx="3"/><rect x="20" y="170" width="200" height="20" fill="%23666" rx="3"/><rect x="220" y="80" width="160" height="140" fill="%23444" rx="8"/><circle cx="300" cy="120" r="15" fill="%23777"/><rect x="240" y="150" width="120" height="8" fill="%23666" rx="4"/><rect x="240" y="170" width="100" height="8" fill="%23666" rx="4"/><rect x="240" y="190" width="80" height="8" fill="%23666" rx="4"/><rect x="20" y="240" width="360" height="2" fill="%23555"/><rect x="20" y="260" width="120" height="15" fill="%23777" rx="3"/><rect x="160" y="260" width="80" height="15" fill="%23777" rx="3"/><rect x="260" y="260" width="120" height="15" fill="%23777" rx="3"/></svg>');
+            background-size: cover;
+            background-position: center;
+            filter: blur(12px);
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .spec-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2);
+        }
+
+        .spec-card:hover::before {
+            filter: blur(6px);
+            opacity: 0.8;
+        }
+
+        /* Camada extra de proteção */
+        .spec-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.4) 0%, 
+                rgba(0, 0, 0, 0.2) 50%, 
+                rgba(0, 0, 0, 0.4) 100%);
+            backdrop-filter: blur(3px);
+            border-radius: 15px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Variações de background para cada card */
+        .spec-card[style*="--bg-variation: 2"]::before {
+            background: linear-gradient(135deg, 
+                rgba(26, 26, 26, 0.8) 0%, 
+                rgba(42, 42, 42, 0.7) 50%, 
+                rgba(26, 26, 26, 0.8) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23333"/><rect x="20" y="20" width="360" height="30" fill="%23444" rx="5"/><rect x="20" y="60" width="120" height="80" fill="%23555" rx="8"/><rect x="150" y="60" width="230" height="20" fill="%23666" rx="3"/><rect x="150" y="90" width="180" height="15" fill="%23666" rx="3"/><rect x="150" y="110" width="200" height="15" fill="%23666" rx="3"/><rect x="150" y="130" width="160" height="15" fill="%23666" rx="3"/><rect x="20" y="160" width="360" height="100" fill="%23444" rx="5"/><rect x="40" y="180" width="320" height="8" fill="%23666" rx="4"/><rect x="40" y="200" width="280" height="8" fill="%23666" rx="4"/><rect x="40" y="220" width="240" height="8" fill="%23666" rx="4"/><rect x="40" y="240" width="200" height="8" fill="%23666" rx="4"/></svg>');
+        }
+
+        .spec-card[style*="--bg-variation: 3"]::before {
+            background: linear-gradient(135deg, 
+                rgba(26, 26, 26, 0.8) 0%, 
+                rgba(42, 42, 42, 0.7) 50%, 
+                rgba(26, 26, 26, 0.8) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23333"/><rect x="20" y="20" width="150" height="40" fill="%23555" rx="5"/><rect x="190" y="20" width="190" height="40" fill="%23444" rx="5"/><rect x="20" y="80" width="360" height="140" fill="%23444" rx="8"/><rect x="40" y="100" width="80" height="80" fill="%23666" rx="5"/><rect x="140" y="100" width="220" height="20" fill="%23777" rx="3"/><rect x="140" y="130" width="180" height="15" fill="%23777" rx="3"/><rect x="140" y="150" width="160" height="15" fill="%23777" rx="3"/><rect x="40" y="240" width="320" height="30" fill="%23555" rx="5"/><circle cx="60" cy="255" r="8" fill="%23777"/><circle cx="90" cy="255" r="8" fill="%23777"/><circle cx="120" cy="255" r="8" fill="%23777"/></svg>');
         }
 
         .spec-card h3 {
@@ -281,6 +506,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
             color: #e0e0e0;
+            text-align: left;
         }
 
         .benefit-card:hover {
@@ -308,7 +534,7 @@
         }
 
         .step {
-            text-align: center;
+            text-align: left;
             position: relative;
         }
 
@@ -323,7 +549,7 @@
             justify-content: center;
             font-size: 1.5rem;
             font-weight: bold;
-            margin: 0 auto 1rem;
+            margin: 0 0 1rem 0;
         }
 
         .step h3 {
@@ -336,7 +562,7 @@
             background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
             color: #e0e0e0;
             padding: 80px 0;
-            text-align: center;
+            text-align: left;
         }
 
         .final-cta h2 {
@@ -363,8 +589,74 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .secondary-title {
+                font-size: 2rem;
+            }
+            
+            .hero-highlight {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .highlight-text {
+                font-size: 1rem;
+            }
+            
+            .hero-main {
+                margin-bottom: 2rem;
+                padding: 1.5rem 0;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
+            }
+            
+            .help-cta-button {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+            }
+            
+            .hero-columns {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                min-height: auto;
+            }
+            
+            .hero-left {
+                text-align: center;
+                order: 2;
+            }
+            
+            .hero-right {
+                order: 1;
+            }
+            
+            .hero-image {
+                height: 250px;
+            }
+            
+            .lightning-bolt {
+                font-size: 8rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .powered-by {
+                font-size: 0.5rem;
             }
             
             .hero .tagline {
@@ -376,12 +668,29 @@
             }
             
             .hero-buttons {
+                justify-content: flex-start;
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
             }
             
             .nav-links {
                 display: none;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .step-number {
+                margin: 0 auto 1rem;
+            }
+            
+            .step {
+                text-align: center;
             }
         }
 
@@ -548,6 +857,31 @@
             color: #1a1a1a;
         }
 
+        .help-cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: #1a1a1a;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .help-cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.5);
+            background: linear-gradient(45deg, #ff5252, #ffc107);
+        }
+
+        .help-cta-button:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
         .warning-text {
             background: rgba(255, 215, 0, 0.1);
             border: 1px solid #ffd700;
@@ -696,14 +1030,17 @@
     <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo">ROI-Tech</div>
+            <div class="logo">
+                🦄 TROiAH
+                <span class="powered-by">powered by FNW</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#solucao">Solução</a></li>
                 <li><a href="#tecnologia">Tecnologia</a></li>
                 <li><a href="#processo">Processo</a></li>
             </ul>
-            <a href="#contato" class="cta-button">Quero a POC</a>
+            <a href="#contato" class="cta-button" id="pocButton" style="background: #000; color: #666; pointer-events: none; cursor: not-allowed;">Quero a POC (30s)</a>
         </nav>
     </header>
 
@@ -711,16 +1048,51 @@
     <section id="inicio" class="hero">
         <div class="container">
             <div class="hero-content animate-fade-in-up">
-                <h1>Solução Técnica Completa</h1>
-                <p class="tagline">Front-end + Back-end Prontos para Seus Agentes IA</p>
+                <div class="hero-columns">
+                    <div class="hero-left">
+                        <div class="hero-main">
+                            <h1 class="hero-title">Chegamos <br>a Era da Velocidade da Luz</h1>
+                            <p class="hero-subtitle">Conheça a sua  Plataforma de Demonstração e Inclusão Digital Instantânea</p>
+                            <div class="hero-highlight">
+                                <span class="highlight-text">Zero Desperdício • Zero Bugs • Zero Dor de Cabeça</span>
+                            </div>
+                        </div>
+                        
+                        <h2 class="secondary-title">Embarque suas Demandas Conosco</h2>
+                <p class="tagline">Front-end + Back-end + ROI otimizado para:
+                    
+                    <p><h3> Agentes IA</h3></p>
+                    <br> <h4>e mais:</h4><br>
+                    <p> Catálogos</p>
+                    <p> Demonstrações</p>
+                    <p> Treinamentos</p>
+                    <p> Cursos</p>
+                    <p> Atendimentos</p>
+                    <p> Eventos</p>
+                    <p> Apresentações</p>
+                    <p> Aulas</p><br>
+
+
+
                 <p class="subtitle">
-                    <strong>Você foca no comercial, nós fazemos toda a tecnologia.</strong><br>
-                    Interface superior ao ChatGPT + infraestrutura completa para implementar seus agentes IA. 
-                    Zero desenvolvimento, zero dor de cabeça, 100% funcional.
+                    <strong>Você foca no relacionamento, nós entregamos a Experiência Final com Lucratividade.</strong><br>
+                    <br>Interface diâmica e interativa + infraestrutura completa para implementar seus agentes IA Lucrativos. 
+                    <br><br>Seu cliente acessa sua marca com nossa Infra completa.
+                    <h2> Zero Labirintos, 100% funcional.</h2>
                 </p>
-                <div class="hero-buttons">
-                    <button onclick="openModal()" class="cta-button">🚀 FERRAMENTA DO MÊS</button>
-                    <a href="#solucao" class="cta-button" style="background: rgba(255,255,255,0.2);">BREVE</a>
+                        <div class="hero-buttons">
+                            <button onclick="openModal()" class="cta-button">🚀 FERRAMENTA DO MÊS</button>
+                            <a href="#solucao" class="cta-button" style="background: rgba(255,255,255,0.2);">BREVE</a>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-right">
+                        <div class="hero-image">
+                            <div class="lightning-container">
+                                <div class="lightning-bolt">⚡</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -745,7 +1117,7 @@
     <!-- Solution Section -->
     <section id="solucao" class="solution">
         <div class="container">
-            <h2 class="section-title fade-in-on-scroll">Nossa Proposta: Zero Desenvolvimento</h2>
+            <h2 class="section-title fade-in-on-scroll">Nossa Proposta:<br> Zero Complexidade, Total Flexibilidade</h2>
             <div class="solution-grid">
                 <div class="solution-card fade-in-on-scroll">
                     <div class="solution-icon">🎨</div>
@@ -769,39 +1141,39 @@
     <!-- Tech Specs Section -->
     <section id="tecnologia" class="tech-specs">
         <div class="container">
-            <h2 class="section-title fade-in-on-scroll">Especificações Técnicas</h2>
+            <h2 class="section-title fade-in-on-scroll">Características</h2>
             <div class="specs-grid">
-                <div class="spec-card fade-in-on-scroll">
-                    <h3>🎯 Front-end</h3>
+                <div class="spec-card fade-in-on-scroll" style="--bg-variation: 3;">
+                    <h3>🛠️ Integração</h3>
                     <ul class="spec-list">
-                        <li>Framework React/Vue otimizado</li>
-                        <li>Design Cards + Chat interface</li>
-                        <li>Responsive mobile-first</li>
-                        <li>Performance < 2s carregamento</li>
-                        <li>Temas e layouts customizáveis</li>
-                        <li>UX superior ao ChatGPT</li>
+                        <li>Simplificada - Sua URL</li>
+                        <li>Super Agentes (Lendários)</li>
+                        <li>N8N</li>
+                        <li>Landing Page</li>
+                        <li>Opção White label completo</li>
+                        <li>Licenciamento com Recorrência - Consute</li>
                     </ul>
                 </div>
-                <div class="spec-card fade-in-on-scroll">
+                <div class="spec-card fade-in-on-scroll" style="--bg-variation: 2;">
                     <h3>⚡ Back-end</h3>
                     <ul class="spec-list">
                         <li>Infraestrutura cloud escalável</li>
-                        <li>IA GPT-4 + modelos custom</li>
+                        <li>LLM por crédito - opcional</li>
                         <li>Segurança e autenticação robusta</li>
-                        <li>APIs REST + WebSocket</li>
-                        <li>Banco otimizado para IA</li>
-                        <li>Monitoramento 24/7</li>
+                        <li>Combo Saas (LP, Login, Sistema)</li>
+                        <li>Zero complexidade</li>
+                        <li>Pronto para addons e Upsell</li>
                     </ul>
                 </div>
-                <div class="spec-card fade-in-on-scroll">
-                    <h3>🛠️ Integração</h3>
+                <div class="spec-card fade-in-on-scroll" style="--bg-variation: 1;">
+                    <h3>🎯 Front-end</h3>
                     <ul class="spec-list">
-                        <li>Deploy automatizado</li>
-                        <li>Backup automático</li>
-                        <li>Atualizações sem interrupção</li>
-                        <li>Suporte técnico dedicado</li>
-                        <li>White label completo</li>
-                        <li>Documentação completa</li>
+                        <li>Menu Interativo</li>
+                        <li>Sistema de Busca</li>
+                        <li>Responsivo mobile-first</li>
+                        <li>Performance < 2s carregamento</li>
+                        <li>Itens customizáveis (Fortalecimento de Marca)</li>
+                        <li>Seção de Favoritos Personalizáveis "on the fly"</li>
                     </ul>
                 </div>
             </div>
@@ -816,7 +1188,7 @@
                 <div class="benefit-card fade-in-on-scroll">
                     <div class="benefit-icon">⏱️</div>
                     <h3>Tempo</h3>
-                    <p><strong>Zero desenvolvimento:</strong> Semanas → Dias. Sistema testado e funcionando. Zero bugs, zero manutenção.</p>
+                    <p><strong>Zero desenvolvimento:</strong> Meses → Dias. Sistema testado e funcionando. Zero bugs, zero manutenção.</p>
                 </div>
                 <div class="benefit-card fade-in-on-scroll">
                     <div class="benefit-icon">💵</div>
@@ -826,7 +1198,7 @@
                 <div class="benefit-card fade-in-on-scroll">
                     <div class="benefit-icon">🎯</div>
                     <h3>Comercial</h3>
-                    <p><strong>Produto superior:</strong> Interface melhor que ChatGPT. Diferencial único. Tecnologia de ponta sem investimento.</p>
+                    <p><strong>Produto com Dinâmica superior:</strong> Interface Incremental  Elimina ChatGPT genérico. Diferencial único. Tecnologia de ponta sem investimento.</p>
                 </div>
                 <div class="benefit-card fade-in-on-scroll">
                     <div class="benefit-icon">🤝</div>
@@ -870,23 +1242,32 @@
     <section id="contato" class="final-cta">
         <div class="container">
             <div class="fade-in-on-scroll">
-                <h2>Pronto Para Começar?</h2>
-                <p>Nós fazemos todo o trabalho técnico, você fica com todo o comercial.</p>
+                <h2>Pronto Para embarcar?</h2>
+                <p>Nós fizemos todo o trabalho estratégico e técnico, você fica com o relacionamento comercial.</p>
                 
                 <div class="urgency">
                     <strong>⚡ POC / MVP em até 5 dias úteis:</strong> Envie as especificações hoje e tenha sua plataforma funcionando amanhã.
                 </div>
 
-                <div class="hero-buttons">
+                <div class="hero-buttons" style="justify-content: center;">
                     <button onclick="openModal()" class="cta-button">🎯 Teste o Personal Prompter Agora</button>
                     <a href="https://wa.me/5511999999999" class="cta-button" style="background: rgba(255,255,255,0.2);">
-                        WhatsApp: (11) 99999-9999
+                        WhatsApp: (11) 91159-5028
                     </a>
                 </div>
 
                 <p style="margin-top: 2rem; opacity: 0.8; font-size: 1rem;">
                     <strong>Informações necessárias:</strong> Logo, especificações dos agentes, funcionalidades específicas, timeline de lançamento
                 </p>
+                
+                <div style="margin-top: 3rem; text-align: center;">
+                    <button onclick="openHelpModal()" class="help-cta-button">
+                        🆘 Me ajuda!
+                    </button>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #b0b0b0;">
+                        Não sabe por onde começar? Clique aqui para ajuda personalizada!
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -924,8 +1305,8 @@
                     </div>
 
                     <div class="modal-buttons">
-                        <button type="submit" class="btn-submit">
-                            ✨ Acessar Personal Prompter
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            ✨ Enviar Lead via WhatsApp
                         </button>
                     </div>
                 </form>
@@ -933,19 +1314,19 @@
 
             <div id="successSection" style="display: none;">
                 <div class="success-message">
-                    <h3>🎉 Parabéns!</h3>
-                    <p>Seus dados foram salvos com sucesso. Agora você tem acesso ao <strong>Personal Prompter</strong>!</p>
+                    <h3>🎉 Sucesso!</h3>
+                    <p>Seus dados foram enviados com sucesso! Uma aba do <strong>WhatsApp</strong> foi aberta para finalizar o contato.</p>
                     
                     <div class="warning-text">
-                        ⚡ <strong>Acesso da Semana:</strong> Esta ferramenta está disponível por tempo limitado. Aproveite para testar todas as funcionalidades!
+                        📱 <strong>Próximos Passos:</strong> Verifique a aba do WhatsApp que foi aberta e envie a mensagem para completar seu cadastro. Nossa equipe entrará em contato em breve!
                     </div>
 
                     <button onclick="openAppModal()" class="access-link" style="border: none; cursor: pointer;">
-                        🔧 Abrir Personal Prompter
+                        🔧 Testar Personal Prompter Agora
                     </button>
 
                     <p style="font-size: 0.9rem; color: #b0b0b0; margin-top: 1rem;">
-                        💡 Dica: Mantenha esta aba aberta para retornar facilmente!
+                        💡 Dica: Teste a ferramenta enquanto aguarda nosso contato!
                     </p>
                 </div>
             </div>
@@ -958,7 +1339,7 @@
             <span class="close" onclick="closeAppModal()">&times;</span>
             
             <div class="app-header">
-                <h3>🚀 Personal Prompter - Ferramenta Exclusiva</h3>
+                <h3>🚀 Desktop Personal Prompter - Ferramenta Exclusiva</h3>
                 <p>Preencha  nossa Ferramenta especializada em criação de prompts avançados</p>
             </div>
 
@@ -1058,9 +1439,9 @@
         function actionButton1() {
             // Abre WhatsApp com preenchimento automático
             const userData = JSON.parse(localStorage.getItem('leadData') || '{}');
-            const nome = userData.nome || 'Usuário';
-            const email = userData.email || '';
-            const pergunta = userData.pergunta || '';
+            const nome = userData.nome || '[Nome não informado]';
+            const email = userData.email || '[Email não informado]';
+            const pergunta = userData.pergunta || '[Pergunta não informada]';
             
             const message = `🚀 *Personal Prompter - Textos Salvos*
 
@@ -1071,7 +1452,7 @@ Olá! Testei a ferramenta Personal Prompter e gostaria de receber os textos salv
 📧 Email: ${email}
 ❓ Pergunta testada: ${pergunta}
 
-Poderiam me enviar os resultados gerados pela ferramenta?
+💡 *Observação:* Caso os dados acima estejam incompletos, favor me orientar sobre como acessar os textos gerados pela ferramenta.
 
 Obrigado!`;
 
@@ -1087,11 +1468,37 @@ Obrigado!`;
             window.open(rosanaUrl, '_blank');
         }
 
+        function openHelpModal() {
+            // Abre WhatsApp com mensagem de ajuda personalizada
+            const helpMessage = `🆘 *PRECISO DE AJUDA - TROiAH*
+
+Olá! Vi a landing page da TROiAH e fiquei interessado, mas preciso de ajuda para entender melhor como funciona.
+
+🤔 *Minhas dúvidas:*
+• Como exatamente funciona o processo?
+• Quais informações preciso enviar?
+• Quanto tempo leva para ter algo funcionando?
+• Como é a questão dos custos/investimento?
+• Posso ver exemplos de projetos já feitos?
+
+💡 *Minha situação:*
+[Descreva brevemente seu projeto/necessidade]
+
+📱 Pode me ajudar a entender melhor? Obrigado!`;
+
+            const phoneNumber = '5511911595028';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(helpMessage)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
         // Handle form submission
         leadForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simular envio de dados
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Capturar dados do formulário
             const formData = new FormData(this);
             const leadData = {
                 nome: formData.get('nome'),
@@ -1101,16 +1508,53 @@ Obrigado!`;
                 timestamp: new Date().toISOString()
             };
             
-            // Salvar no localStorage (em produção seria uma API)
+            // Validar campos obrigatórios
+            if (!leadData.nome || !leadData.email || !leadData.pergunta) {
+                alert('Por favor, preencha todos os campos obrigatórios (Nome, E-mail e Pergunta).');
+                return;
+            }
+            
+            // Feedback visual
+            submitBtn.innerHTML = '📱 Abrindo WhatsApp...';
+            submitBtn.disabled = true;
+            
+            // Salvar no localStorage
             localStorage.setItem('leadData', JSON.stringify(leadData));
             console.log('Lead capturado:', leadData);
             
-            hasSubmitted = true;
-            showSuccess();
-            
-            // Remover modo persistente
-            modal.classList.remove('persistent');
-            clearTimeout(persistentTimer);
+            // Formatar mensagem para WhatsApp
+            const message = `🚀 *NOVO LEAD - ROI-Tech Personal Prompter*
+
+📋 *Dados do Lead:*
+👤 Nome: ${leadData.nome}
+📧 Email: ${leadData.email}
+🏢 CNPJ: ${leadData.cnpj || 'Não informado'}
+❓ Pergunta: ${leadData.pergunta}
+🕐 Data/Hora: ${new Date().toLocaleString('pt-BR')}
+
+---
+✨ Lead interessado em testar o Personal Prompter
+📱 Enviado via Landing Page ROI-Tech`;
+
+            // Enviar para WhatsApp após pequeno delay
+            setTimeout(() => {
+                const phoneNumber = '5511911595028';
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                
+                // Abrir WhatsApp em nova aba
+                window.open(whatsappUrl, '_blank');
+                
+                hasSubmitted = true;
+                showSuccess();
+                
+                // Remover modo persistente
+                modal.classList.remove('persistent');
+                clearTimeout(persistentTimer);
+                
+                // Restaurar botão
+                submitBtn.innerHTML = '✅ Enviado!';
+                submitBtn.disabled = false;
+            }, 1000);
         });
 
         // Modal auto-open após 5 segundos
@@ -1118,7 +1562,7 @@ Obrigado!`;
             if (!hasSubmitted) {
                 openModal();
             }
-        }, 5000);
+        }, 15000);
 
         // Verificar se já tem dados salvos
         window.addEventListener('load', () => {
@@ -1199,6 +1643,40 @@ Obrigado!`;
             }, 100);
         });
 
+        // POC Button Delay Control
+        let pocButtonTimer = 30;
+        const pocButton = document.getElementById('pocButton');
+        
+        function updatePocButton() {
+            if (pocButtonTimer > 0) {
+                // Estado desabilitado - fundo preto, letra cinza
+                pocButton.textContent = `Quero a POC (${pocButtonTimer}s)`;
+                pocButton.style.background = '#000';
+                pocButton.style.color = '#666';
+                pocButton.style.pointerEvents = 'none';
+                pocButton.style.cursor = 'not-allowed';
+                pocButton.style.border = '2px solid #333';
+                pocButtonTimer--;
+                setTimeout(updatePocButton, 1000);
+            } else {
+                // Estado ativo - "acende" com cores normais
+                pocButton.textContent = 'Quero a POC';
+                pocButton.style.background = 'linear-gradient(45deg, #ffd700, #ffed4e)';
+                pocButton.style.color = '#1a1a1a';
+                pocButton.style.pointerEvents = 'auto';
+                pocButton.style.cursor = 'pointer';
+                pocButton.style.border = '2px solid #ffd700';
+                pocButton.style.transform = 'scale(1.05)';
+                pocButton.style.boxShadow = '0 5px 15px rgba(255, 215, 0, 0.4)';
+                setTimeout(() => {
+                    pocButton.style.transform = '';
+                }, 300);
+            }
+        }
+        
+        // Iniciar countdown do botão POC
+        updatePocButton();
+
         // Add click handlers for CTA buttons
         document.querySelectorAll('.cta-button').forEach(button => {
             button.addEventListener('click', function(e) {
@@ -1211,4 +1689,4 @@ Obrigado!`;
         });
     </script>
 </body>
-</html> 
+</html> >
