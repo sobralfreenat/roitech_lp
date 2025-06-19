@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solução Técnica Completa - Front-end + Back-end para Agentes IA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #1a1a1a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1a1a1a;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: linear-gradient(135deg, #333 0%, #2a2a2a 100%);
+            padding: 80px 0;
+        }
+
+        .problem-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .problem h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+
+        .problem-highlight {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 80px 0;
+            background: #1a1a1a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #e0e0e0;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, #333 0%, #2a2a2a 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffd700;
+            background: linear-gradient(135deg, #404040 0%, #333 100%);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .solution-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        /* Tech Specs Section */
+        .tech-specs {
+            background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            padding: 80px 0;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .spec-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .spec-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .spec-list li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2a2a2a 0%, #333 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #404040 0%, #333 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+            color: #e0e0e0;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Process Section */
+        .process {
+            background: #1a1a1a;
+            padding: 80px 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1a1a1a;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .urgency {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 600px;
+            font-size: 1.1rem;
+            border-left: 4px solid #ffd700;
+            border: 1px solid #ffd700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.3rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 2px solid #ffd700;
+            border-radius: 20px;
+            width: 95%;
+            max-width: 500px;
+            position: relative;
+            color: #e0e0e0;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        .modal-content.large {
+            max-width: 90%;
+            width: 90%;
+            height: 85vh;
+            padding: 1rem;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h2 {
+            color: #ffd700;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background: #333;
+            color: #e0e0e0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn-submit {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1a1a1a;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            color: #b0b0b0;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ffd700;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .success-message h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .access-link {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1a1a1a;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .access-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            text-decoration: none;
+            color: #1a1a1a;
+        }
+
+        .warning-text {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid #ffd700;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #ffd700;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Application Modal */
+        .app-container {
+            width: 100%;
+            height: 70vh;
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 1rem 0;
+            background: #fff;
+        }
+
+        .app-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 13px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, #333 0%, #2a2a2a 100%);
+            color: #e0e0e0;
+            padding: 1rem 2rem;
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .btn-action:hover {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            text-decoration: none;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .app-header h3 {
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-header p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        /* Persistente Modal */
+        .modal.persistent {
+            pointer-events: none;
+        }
+
+        .modal.persistent .modal-content {
+            pointer-events: auto;
+            animation: persistentPulse 2s infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes persistentPulse {
+            0%, 100% {
+                border-color: #ffd700;
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            }
+            50% {
+                border-color: #ffed4e;
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .fade-in-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">ROI-Tech</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#solucao">Solução</a></li>
+                <li><a href="#tecnologia">Tecnologia</a></li>
+                <li><a href="#processo">Processo</a></li>
+            </ul>
+            <a href="#contato" class="cta-button">Quero a POC</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content animate-fade-in-up">
+                <h1>Solução Técnica Completa</h1>
+                <p class="tagline">Front-end + Back-end Prontos para Seus Agentes IA</p>
+                <p class="subtitle">
+                    <strong>Você foca no comercial, nós fazemos toda a tecnologia.</strong><br>
+                    Interface superior ao ChatGPT + infraestrutura completa para implementar seus agentes IA. 
+                    Zero desenvolvimento, zero dor de cabeça, 100% funcional.
+                </p>
+                <div class="hero-buttons">
+                    <button onclick="openModal()" class="cta-button">🚀 FERRAMENTA DO MÊS</button>
+                    <a href="#solucao" class="cta-button" style="background: rgba(255,255,255,0.2);">BREVE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <div class="problem-content fade-in-on-scroll">
+                <h2>Sua Demanda, Nossa Expertise</h2>
+                <div class="problem-highlight">
+                    "Preciso demonstrar Agentes IA de forma simples e elegante"
+                </div>
+                <p style="font-size: 1.2rem; color: #b0b0b0;">
+                    Sabemos que desenvolver uma plataforma de IA do zero pode levar meses, 
+                    custar dezenas de milhares e ainda ter bugs. Por isso criamos a solução completa.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solucao" class="solution">
+        <div class="container">
+            <h2 class="section-title fade-in-on-scroll">Nossa Proposta: Zero Desenvolvimento</h2>
+            <div class="solution-grid">
+                <div class="solution-card fade-in-on-scroll">
+                    <div class="solution-icon">🎨</div>
+                    <h3>Front-end Superior</h3>
+                    <p><strong>Interface melhor que ChatGPT:</strong> Sistema de cards intuitivo, menu personalizável, design responsivo profissional, UX otimizada para conversão.</p>
+                </div>
+                <div class="solution-card fade-in-on-scroll">
+                    <div class="solution-icon">⚙️</div>
+                    <h3>Back-end Completo</h3>
+                    <p><strong>Infraestrutura pronta:</strong> Sistema de gerenciamento de agentes, autenticação robusta, APIs para integração, dashboard administrativo.</p>
+                </div>
+                <div class="solution-card fade-in-on-scroll">
+                    <div class="solution-icon">🤖</div>
+                    <h3>Para Seus Agentes</h3>
+                    <p><strong>Estrutura flexível:</strong> Implementação de qualquer agente, personalização por cliente, múltiplos agentes, gestão centralizada, escalabilidade automática.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Specs Section -->
+    <section id="tecnologia" class="tech-specs">
+        <div class="container">
+            <h2 class="section-title fade-in-on-scroll">Especificações Técnicas</h2>
+            <div class="specs-grid">
+                <div class="spec-card fade-in-on-scroll">
+                    <h3>🎯 Front-end</h3>
+                    <ul class="spec-list">
+                        <li>Framework React/Vue otimizado</li>
+                        <li>Design Cards + Chat interface</li>
+                        <li>Responsive mobile-first</li>
+                        <li>Performance < 2s carregamento</li>
+                        <li>Temas e layouts customizáveis</li>
+                        <li>UX superior ao ChatGPT</li>
+                    </ul>
+                </div>
+                <div class="spec-card fade-in-on-scroll">
+                    <h3>⚡ Back-end</h3>
+                    <ul class="spec-list">
+                        <li>Infraestrutura cloud escalável</li>
+                        <li>IA GPT-4 + modelos custom</li>
+                        <li>Segurança e autenticação robusta</li>
+                        <li>APIs REST + WebSocket</li>
+                        <li>Banco otimizado para IA</li>
+                        <li>Monitoramento 24/7</li>
+                    </ul>
+                </div>
+                <div class="spec-card fade-in-on-scroll">
+                    <h3>🛠️ Integração</h3>
+                    <ul class="spec-list">
+                        <li>Deploy automatizado</li>
+                        <li>Backup automático</li>
+                        <li>Atualizações sem interrupção</li>
+                        <li>Suporte técnico dedicado</li>
+                        <li>White label completo</li>
+                        <li>Documentação completa</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title fade-in-on-scroll">Vantagens Para Você</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in-on-scroll">
+                    <div class="benefit-icon">⏱️</div>
+                    <h3>Tempo</h3>
+                    <p><strong>Zero desenvolvimento:</strong> Semanas → Dias. Sistema testado e funcionando. Zero bugs, zero manutenção.</p>
+                </div>
+                <div class="benefit-card fade-in-on-scroll">
+                    <div class="benefit-icon">💵</div>
+                    <h3>Financeiro</h3>
+                    <p><strong>Zero investimento:</strong> Sem custos de desenvolvimento. Zero risco. Receita imediata desde o primeiro dia.</p>
+                </div>
+                <div class="benefit-card fade-in-on-scroll">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Comercial</h3>
+                    <p><strong>Produto superior:</strong> Interface melhor que ChatGPT. Diferencial único. Tecnologia de ponta sem investimento.</p>
+                </div>
+                <div class="benefit-card fade-in-on-scroll">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Parceria</h3>
+                    <p><strong>20% recorrente:</strong> White label completo. Sua marca 100%. Suporte técnico. Nós invisíveis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="processo" class="process">
+        <div class="container">
+            <h2 class="section-title fade-in-on-scroll">Processo Simples em 4 Passos</h2>
+            <div class="process-steps">
+                <div class="step fade-in-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Você Envia</h3>
+                    <p>Logo + especificações dos agentes + funcionalidades desejadas via Google Drive</p>
+                </div>
+                <div class="step fade-in-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3>Nós Entregamos</h3>
+                    <p>POC funcionando em 5 dias úteis com sua marca e estrutura pronta para seus agentes</p>
+                </div>
+                <div class="step fade-in-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3>Você Testa</h3>
+                    <p>Valida com seu cliente, implementa os agentes na estrutura pronta</p>
+                </div>
+                <div class="step fade-in-on-scroll">
+                    <div class="step-number">4</div>
+                    <h3>Você Vende</h3>
+                    <p>Começa a faturar imediatamente com tecnologia superior e suporte completo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contato" class="final-cta">
+        <div class="container">
+            <div class="fade-in-on-scroll">
+                <h2>Pronto Para Começar?</h2>
+                <p>Nós fazemos todo o trabalho técnico, você fica com todo o comercial.</p>
+                
+                <div class="urgency">
+                    <strong>⚡ POC / MVP em até 5 dias úteis:</strong> Envie as especificações hoje e tenha sua plataforma funcionando amanhã.
+                </div>
+
+                <div class="hero-buttons">
+                    <button onclick="openModal()" class="cta-button">🎯 Teste o Personal Prompter Agora</button>
+                    <a href="https://wa.me/5511999999999" class="cta-button" style="background: rgba(255,255,255,0.2);">
+                        WhatsApp: (11) 99999-9999
+                    </a>
+                </div>
+
+                <p style="margin-top: 2rem; opacity: 0.8; font-size: 1rem;">
+                    <strong>Informações necessárias:</strong> Logo, especificações dos agentes, funcionalidades específicas, timeline de lançamento
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Captura de Leads -->
+    <div id="leadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            
+            <div id="formSection">
+                <div class="modal-header">
+                    <h2>🚀 Acesso Exclusivo</h2>
+                    <p>Teste nossa ferramenta Personal Prompter e acesse funcionalidades exclusivas!</p>
+                </div>
+
+                <form id="leadForm">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cnpj">CNPJ (opcional)</label>
+                        <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pergunta">Envie sua pergunta para testar o Personal Prompter</label>
+                        <textarea id="pergunta" name="pergunta" placeholder="Ex: Como criar prompts mais eficazes para IA? Ou qualquer pergunta sobre marketing, vendas, tecnologia..." required></textarea>
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button type="submit" class="btn-submit">
+                            ✨ Acessar Personal Prompter
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="successSection" style="display: none;">
+                <div class="success-message">
+                    <h3>🎉 Parabéns!</h3>
+                    <p>Seus dados foram salvos com sucesso. Agora você tem acesso ao <strong>Personal Prompter</strong>!</p>
+                    
+                    <div class="warning-text">
+                        ⚡ <strong>Acesso da Semana:</strong> Esta ferramenta está disponível por tempo limitado. Aproveite para testar todas as funcionalidades!
+                    </div>
+
+                    <button onclick="openAppModal()" class="access-link" style="border: none; cursor: pointer;">
+                        🔧 Abrir Personal Prompter
+                    </button>
+
+                    <p style="font-size: 0.9rem; color: #b0b0b0; margin-top: 1rem;">
+                        💡 Dica: Mantenha esta aba aberta para retornar facilmente!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal da Aplicação -->
+    <div id="appModal" class="modal">
+        <div class="modal-content large">
+            <span class="close" onclick="closeAppModal()">&times;</span>
+            
+            <div class="app-header">
+                <h3>🚀 Personal Prompter - Ferramenta Exclusiva</h3>
+                <p>Preencha  nossa Ferramenta especializada em criação de prompts avançados</p>
+            </div>
+
+            <div class="app-container">
+                <iframe 
+                    id="appIframe" 
+                    class="app-iframe" 
+                    src="https://sobralfreenat.github.io/agent_ai_prompt_gen_tool/"
+                    title="Personal Prompter Tool">
+                </iframe>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-action" onclick="actionButton1()">
+                    🎯 Textos Salvos (Doc)
+                </button>
+                <button class="btn-action" onclick="actionButton2()">
+                    ⚡ Criar conta teste (cortesia)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Functions
+        let modal = document.getElementById('leadModal');
+        let appModal = document.getElementById('appModal');
+        let formSection = document.getElementById('formSection');
+        let successSection = document.getElementById('successSection');
+        let leadForm = document.getElementById('leadForm');
+        let hasSubmitted = false;
+        let persistentTimer;
+
+        function openModal() {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            
+            // Se já submeteu, ir direto para success
+            if (hasSubmitted) {
+                showSuccess();
+            }
+        }
+
+        function closeModal() {
+            // Se não submeteu ainda, não pode fechar
+            if (!hasSubmitted) {
+                startPersistentMode();
+                return;
+            }
+            
+            modal.classList.remove('show');
+            modal.classList.remove('persistent');
+            document.body.style.overflow = 'auto';
+            clearTimeout(persistentTimer);
+        }
+
+        function startPersistentMode() {
+            modal.classList.add('persistent');
+            
+            // Reabre o modal a cada 3 segundos
+            persistentTimer = setTimeout(() => {
+                if (!hasSubmitted) {
+                    modal.classList.remove('persistent');
+                    setTimeout(() => {
+                        openModal();
+                    }, 1000);
+                }
+            }, 3000);
+        }
+
+        function showSuccess() {
+            formSection.style.display = 'none';
+            successSection.style.display = 'block';
+        }
+
+        function openAppModal() {
+            // Fecha o modal de leads
+            modal.classList.remove('show');
+            document.body.style.overflow = 'hidden';
+            
+            // Abre o modal da aplicação
+            appModal.classList.add('show');
+        }
+
+        function closeAppModal() {
+            appModal.classList.remove('show');
+            
+            // Reabre o modal de leads se a pessoa já submeteu
+            if (hasSubmitted) {
+                modal.classList.add('show');
+                showSuccess();
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function actionButton1() {
+            // Abre WhatsApp com preenchimento automático
+            const userData = JSON.parse(localStorage.getItem('leadData') || '{}');
+            const nome = userData.nome || 'Usuário';
+            const email = userData.email || '';
+            const pergunta = userData.pergunta || '';
+            
+            const message = `🚀 *Personal Prompter - Textos Salvos*
+
+Olá! Testei a ferramenta Personal Prompter e gostaria de receber os textos salvos.
+
+*Dados do usuário:*
+📝 Nome: ${nome}
+📧 Email: ${email}
+❓ Pergunta testada: ${pergunta}
+
+Poderiam me enviar os resultados gerados pela ferramenta?
+
+Obrigado!`;
+
+            const phoneNumber = '5511911595028';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function actionButton2() {
+            // Abre página de registro do Rosana.io
+            const rosanaUrl = 'https://app.rosana.io/register?p=UHGNFP';
+            window.open(rosanaUrl, '_blank');
+        }
+
+        // Handle form submission
+        leadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simular envio de dados
+            const formData = new FormData(this);
+            const leadData = {
+                nome: formData.get('nome'),
+                email: formData.get('email'),
+                cnpj: formData.get('cnpj'),
+                pergunta: formData.get('pergunta'),
+                timestamp: new Date().toISOString()
+            };
+            
+            // Salvar no localStorage (em produção seria uma API)
+            localStorage.setItem('leadData', JSON.stringify(leadData));
+            console.log('Lead capturado:', leadData);
+            
+            hasSubmitted = true;
+            showSuccess();
+            
+            // Remover modo persistente
+            modal.classList.remove('persistent');
+            clearTimeout(persistentTimer);
+        });
+
+        // Modal auto-open após 5 segundos
+        setTimeout(() => {
+            if (!hasSubmitted) {
+                openModal();
+            }
+        }, 5000);
+
+        // Verificar se já tem dados salvos
+        window.addEventListener('load', () => {
+            const savedData = localStorage.getItem('leadData');
+            if (savedData) {
+                hasSubmitted = true;
+            }
+        });
+
+        // CNPJ Mask
+        document.getElementById('cnpj').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{2})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1/$2');
+            value = value.replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+            e.target.value = value;
+        });
+
+        // Click outside modal
+        window.addEventListener('click', function(e) {
+            if (e.target === modal && !hasSubmitted) {
+                startPersistentMode();
+            }
+            if (e.target === appModal) {
+                closeAppModal();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 26, 26, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%)';
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add click handlers for CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Add click animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html> 
